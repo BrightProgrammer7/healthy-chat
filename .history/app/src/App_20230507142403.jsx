@@ -114,6 +114,7 @@ function App() {
         setHealthyMsg(
           ". Je me sens stressé, Donnez-moi des conseils pour me débarrasser de cette sensation !"
         );
+
         timeout = setInterval(() => {
           console.log(`Healthy Advices were successfully sent to client`);
           setHealthyMsg('.')

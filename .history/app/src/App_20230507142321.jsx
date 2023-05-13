@@ -109,11 +109,15 @@ function App() {
     socket.on("data", (data) => {
       console.log(data);
       let timeout;
+      // setFirstData(data);
+      // setInterval(() => {
       // Check if data is not a heartbeat signal
       if (data != 0 && data != 51 && data != 52) {
+        // Set the flag variable to true to indicate that the interval has been scheduled
         setHealthyMsg(
           ". Je me sens stressé, Donnez-moi des conseils pour me débarrasser de cette sensation !"
         );
+
         timeout = setInterval(() => {
           console.log(`Healthy Advices were successfully sent to client`);
           setHealthyMsg('.')
