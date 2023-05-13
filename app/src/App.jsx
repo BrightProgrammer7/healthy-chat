@@ -36,8 +36,8 @@ function App() {
 
   useEffect(() => {
     // Create a new WebSocket connection
-    const newSocket = io("https://stress-server.onrender.com") || io("http://localhost:4000");
-//     const newSocket = io("http://localhost:4000") || io("https://stress-server.onrender.com");
+//     const newSocket = io("https://stress-server.onrender.com") || io("http://localhost:4000");
+    const newSocket = io("http://localhost:4000") || io("https://stress-server.onrender.com");
 
     // Save the WebSocket connection to state
     setSocket(newSocket);
