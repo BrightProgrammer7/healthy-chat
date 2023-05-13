@@ -3,8 +3,8 @@ import { SerialPort } from "serialport";
 import { Server as SocketIO } from "socket.io";
 
 const app = express();
-// const SERVER_PORT = 4000;
-const SERVER_PORT = 'https://stress-server.onrender.com' || 4000;
+const SERVER_PORT = 4000;
+// const SERVER_PORT = 'https://stress-server.onrender.com' || 4000;
 
 // Two paths as I have to test on my windows pc and mac
 const path = "COM3";
