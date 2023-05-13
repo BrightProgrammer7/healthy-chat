@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "render": "^0.1.4",
+    "vercel": "^29.3.0"
+  }
+}
