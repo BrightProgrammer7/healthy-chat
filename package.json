@@ -1,24 +1,22 @@
 {
-  "type": "module",
-  "dependencies": {
-    "express": "^4.18.2",
-    "nodemon": "^2.0.22",
-    "serialport": "^10.5.0",
-    "socket.io": "^4.6.1"
-  },
   "name": "nano",
   "version": "1.0.0",
-  "main": "node.js",
+  "description": "<<<<<<< HEAD # arduino heart rate \\https://prod.liveshare.vsengsaas.visualstudio.com/join?092D9289E0CC7923416159874A18C73DC1D8",
+  "main": "index.js",
   "directories": {
     "lib": "lib",
     "test": "test"
   },
+  "dependencies": {
+    "concurrently": "^8.0.1"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "srv": "nodemon arduino.js"
+    "client": "npm run ./app/",
+    "server": " npm run ./server/arduino",
+    "app": " concurrently \"npm run server\" \"npm run client\" "
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": ""
+  "license": "ISC"
 }
