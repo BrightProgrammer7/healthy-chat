@@ -1,13 +1,12 @@
 /* eslint-disable no-template-curly-in-string */
 import "./App.css";
 import "./normal.css";
-import { useContext, useEffect, useState } from "react";
-// import { SocketContext } from "./client.js";
-// import { useSnackbar } from "notistack";
+// import { react } from '@vitejs/plugin-react';
+import { useState } from "react";
 
 function App() {
-  const socket = io("http://localhost:4000");
-
+  // const socket = io("http://localhost:4000");
+ 
   const orgKey = import.meta.env.VITE_ORG;
   const apiKey = import.meta.env.VITE_API;
 
@@ -19,6 +18,8 @@ function App() {
       message: "Hello, I am chatGPT, How can I assist you today ? ",
     },
   ]);
+  const [healtyMsg, setHealtyMsg] = useState("");
+
   // const socket = useContext(SocketContext);
 
   // const sendDataToArduino = () => {
@@ -75,19 +76,18 @@ function App() {
     webSocket();
 
     // add client message
+    // const healtyMsg = "";
+
     const newMessage = {
       sender: "user",
-      message: `${input}`,
-      //
+      message: `${input} + '\n' + ${healtyMsg}`,
     };
 
-    const healtyArr = {
-      sender: "user",
-      message: "je suis stressé",
-      //
-    };
+    // const healtyArr = {
+    //   sender: "user",
+    //   message: healtyMsg,
+    // };
     // const healtyMsg = "je suis stressé"
-    const healtyMsg = "Give a tips to get rid of the feeling of stress";
 
     // // post all the old Messages & new Message
     let newMessages = [...messages, newMessage];
@@ -98,8 +98,11 @@ function App() {
       // add healthy tips for irregular heart rate
       if (data <= 60 && data >= 100) {
         // add healthy alert for irregular heart rate
-        newMessage["message"] += `${healtyMsg}`;
-        newMessages.push(healtyArr);
+        setHealtyMsg("My heart rate is irregular. What symptoms am I experiencing ? Give me some tips to get rid of the feeling of stress");
+
+        // newMessage["message"] += `${healtyMsg}`;
+        // newMessages.push(healtyArr);
+        // newMessages = [...messages, newMessage];
 
         // // update our messages state
         // setMessages(newMessages);
@@ -108,11 +111,11 @@ function App() {
         // await sendMessage(newMessages);
       }
       // else {
-        // update our messages state
-        setMessages(newMessages);
+      // update our messages state
+      setMessages(newMessages);
 
-        // post all the old Messages & new Message
-        await sendMessage(newMessages);
+      // post all the old Messages & new Message
+      await sendMessage(newMessages);
       // }
     });
     // }, 6000);
@@ -186,13 +189,13 @@ function App() {
         // send Msg to server
         socket.emit("sentData", "Hello, server!");
         // add client message
-        const heartMessage = {
-          sender: "gpt",
-          message: ``,
-        };
+        // const heartMessage = {
+        //   sender: "gpt",
+        //   message: ``,
+        // };
         socket.on("data", (data) => {
           console.log(`Message from Arduino : ${data}`);
-          var healtyMsg = "";
+          let healtyMsg, heartMessage = "";
           if (data >= 60 && data <= 100) {
             // healtyMsg = "Heart rate: regular";
             setMessages([
@@ -203,14 +206,14 @@ function App() {
               },
             ]);
           } else {
-            healtyMsg = "Heart rate: irregular: ";
-            heartMessage.message = ` You're are stressed! `;
+            heartMessage = "Heart rate: irregular: ";
+            healtyMsg = " You're are stressed! ";
             setMessages([
               ...chatMessages,
               {
                 sender: "gpt",
                 //message: `${data.message}`+`${" NB, You're stressed"}`,
-                message: response + heartMessage.message + healtyMsg + data,
+                message: response + healtyMsg + heartMessage + data,
                 // message: `response + 'You're are stressed! + data`,
                 // message: response + `${" NB, You're stressed"}`
               },
@@ -245,8 +248,8 @@ function App() {
 
       <section className="chatbox">
         <div className="chat-log">
-          {messages.map((message, i) => {
-            return <ChatMessage key={i} messages={message} />;
+          {messages.map((message) => {
+            return <ChatMessage key={message.ID} messages={message} />;
           })}
         </div>
         <div className="chat-input-holder">

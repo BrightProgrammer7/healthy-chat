@@ -1,5 +1,5 @@
 //create a websocket client
-const socket = io("http://localhost:3000");
+// const socket = io("http://localhost:3000");
 
 // handling the event when the connection to server is successful
 socket.on("connect", () => {
