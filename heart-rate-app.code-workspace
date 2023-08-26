@@ -1,0 +1,17 @@
+{
+  "folders": [
+	{
+		"path": "."
+	},
+	{
+		"name": "heart-rate-app",
+		"path": "C:/Users/brigh/OneDrive/Documents/PlatformIO/Projects/heart-rate-app"
+	}
+],
+  "settings": {
+    "editor.formatOnSave": true,
+    "dotnetAcquisitionExtension.existingDotnetPath": [
+      
+    ]
+  }
+}
