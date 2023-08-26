@@ -8,15 +8,19 @@
     "test": "test"
   },
   "dependencies": {
-    "concurrently": "^8.0.1"
+    "concurrently": "^8.0.1",
+    "nodemon": "^2.0.22"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "client": "npm run ./app/",
-    "server": " npm run ./server/arduino",
-    "app": " concurrently \"npm run server\" \"npm run client\" "
+    "client": "vite",
+    "server": " nodemon ./server/arduino.js",
+    "pfa": " concurrently \"npm run server\" \"npm run client\" "
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^4.3.0"
+  }
 }

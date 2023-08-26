@@ -81,13 +81,13 @@ function App() {
       //
     };
 
+    // const healtyMsg = "je suis stressé"
+    const healtyMsg = " Give a tips to get rid of the feeling of stress";
     const healtyArr = {
       sender: "user",
-      message: "je suis stressé",
+      message: healtyMsg
       //
     };
-    // const healtyMsg = "je suis stressé"
-    const healtyMsg = "Give a tips to get rid of the feeling of stress";
 
     // // post all the old Messages & new Message
     let newMessages = [...messages, newMessage];
@@ -95,12 +95,15 @@ function App() {
     // setTimeout(() => {
     // socket.on("data", (data) => {
     socket.on("data", async (data) => {
+      console.log(data);
       // add healthy tips for irregular heart rate
       if (data <= 60 && data >= 100) {
         // add healthy alert for irregular heart rate
-        newMessage["message"] += `${healtyMsg}`;
-        newMessages.push(healtyArr);
+        newMessage["message"] += healtyMsg;
+       newMessages.push(healtyArr);
 
+        newMessages = [...messages, newMessage];
+        console.log(healtyArr)
         // // update our messages state
         // setMessages(newMessages);
 
