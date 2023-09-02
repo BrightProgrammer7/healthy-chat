@@ -202,8 +202,6 @@ function App() {
     const apiRequestBody = {
       model: "gpt-3.5-turbo",
       messages: [systemMessage, ...apiMessages],
-      temperature: 0.5,
-      max_tokens: 100,
     };
     let response = "";
 
