@@ -280,7 +280,7 @@ function App() {
             <ChatMessage key={message.id} messages={message} />
           ))}
         </div>
-        <div cslassName="chat-input-holder">
+        <div className="chat-input-holder">
           <form onSubmit={handleSubmit}>
             <input
               rows="1"
